@@ -1,0 +1,7 @@
+/FerbApi/.gradle/
+/FerbApi/build/
+
+.idea
+
+!**/src/main/**/out/
+!**/src/test/**/out/
