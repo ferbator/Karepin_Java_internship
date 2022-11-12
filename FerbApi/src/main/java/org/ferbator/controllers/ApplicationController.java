@@ -2,8 +2,8 @@ package org.ferbator.controllers;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import org.ferbator.dto.InputDTO;
-import org.ferbator.dto.OutputDTO;
+import org.ferbator.data.InputData;
+import org.ferbator.data.OutputData;
 import org.ferbator.services.ApplicationService;
 import org.ferbator.services.tools.ValidationException;
 import org.ferbator.services.tools.Violation;
@@ -29,10 +29,10 @@ class ApplicationController {
     }
 
     @PostMapping(value = "/user.getFIOAndGroupMembership")
-    public ResponseEntity<OutputDTO> getFIOAndMembership(@RequestParam String token, @RequestBody InputDTO inputDTO)
+    public ResponseEntity<OutputData> getFIOAndMembership(@RequestParam String token, @RequestBody InputData inputData)
             throws ValidationException, ClientException, ApiException {
 
-        return ResponseEntity.ok(service.getFIOAndMembership(token, inputDTO));
+        return ResponseEntity.ok(service.getFIOAndMembership(token, inputData));
     }
 
     @ExceptionHandler(ValidationException.class)

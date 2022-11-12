@@ -9,8 +9,8 @@ import com.vk.api.sdk.objects.groups.responses.IsMemberUserIdsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.responses.GetResponse;
 import com.vk.api.sdk.queries.users.UsersGetQuery;
-import org.ferbator.dto.InputDTO;
-import org.ferbator.dto.OutputDTO;
+import org.ferbator.data.InputData;
+import org.ferbator.data.OutputData;
 import org.ferbator.services.tools.ValidationException;
 import org.springframework.stereotype.Service;
 
@@ -35,30 +35,30 @@ public class ApplicationService {
                 .getStatus();
     }
 
-    public OutputDTO getFIOAndMembership(String token, InputDTO inputDTO) throws ClientException, ApiException, ValidationException {
+    public OutputData getFIOAndMembership(String token, InputData inputData) throws ClientException, ApiException, ValidationException {
         ServiceActor actor = new ServiceActor(APP_ID, token);
-        OutputDTO outputDTO = null;
+        OutputData outputData = null;
         GetResponse getResponse;
         IsMemberUserIdsResponse isMemberUserIdsResponse;
 
-        if (validationService.isValidInput(inputDTO)) {
+        if (validationService.isValidInput(inputData)) {
             getResponse = vk.users()
                     .get(actor)
-                    .userIds(inputDTO.user_id)
+                    .userIds(inputData.user_id)
                     .execute()
                     .get(0);
 
             isMemberUserIdsResponse = vk.groups()
-                    .isMemberWithUserIds(actor, inputDTO.group_id, Integer.valueOf(inputDTO.user_id))
+                    .isMemberWithUserIds(actor, inputData.group_id, Integer.valueOf(inputData.user_id))
                     .execute()
                     .get(0);
 
-            outputDTO = new OutputDTO(getResponse.getFirstName(),
+            outputData = new OutputData(getResponse.getFirstName(),
                     getResponse.getLastName(),
                     getResponse.getNickname(),
                     isMemberUserIdsResponse.isMember());
         }
 
-        return outputDTO;
+        return outputData;
     }
 }

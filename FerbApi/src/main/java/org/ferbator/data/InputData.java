@@ -1,4 +1,4 @@
-package org.ferbator.dto;
+package org.ferbator.data;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class InputDTO {
+public class InputData {
     @NotEmpty(message = "User Id can't be null")
     @Pattern(message = "Attempt to enter a numeric value in the user id", regexp = "[0-9]+")
     public String user_id;

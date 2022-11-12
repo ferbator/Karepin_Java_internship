@@ -2,7 +2,7 @@ package org.ferbator.services;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.ferbator.dto.InputDTO;
+import org.ferbator.data.InputData;
 import org.ferbator.services.tools.ValidationException;
 import org.ferbator.services.tools.Violation;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ import java.util.Set;
 public class ValidationService {
     private final Validator validator;
 
-    public boolean isValidInput(InputDTO inputDTO) throws ValidationException {
-        Set<ConstraintViolation<InputDTO>> constraintViolations = validator.validate(inputDTO);
+    public boolean isValidInput(InputData inputData) throws ValidationException {
+        Set<ConstraintViolation<InputData>> constraintViolations = validator.validate(inputData);
 
         if (CollectionUtils.isNotEmpty(constraintViolations)) {
             throw new ValidationException(buildViolationsList(constraintViolations));
