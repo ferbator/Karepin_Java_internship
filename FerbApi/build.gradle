@@ -30,6 +30,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'com.vk.api:sdk:1.0.14'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.5'
 }
 
 tasks.named('test') {
