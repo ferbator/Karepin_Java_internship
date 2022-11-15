@@ -8,10 +8,10 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 public class OutputData {
-    public String first_name;
-    public String last_name;
-    public String middle_name;
-    public Boolean membership;
+    private String first_name;
+    private String last_name;
+    private String middle_name;
+    private Boolean membership;
 
     public OutputData(String first_name, String last_name, String middle_name, Boolean membership) {
         this.first_name = first_name;

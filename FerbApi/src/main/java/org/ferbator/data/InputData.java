@@ -13,9 +13,9 @@ import javax.validation.constraints.Pattern;
 public class InputData {
     @NotEmpty(message = "User Id can't be null")
     @Pattern(message = "Attempt to enter a numeric value in the user id", regexp = "[0-9]+")
-    public String user_id;
+    private String user_id;
     @NotEmpty(message = "Group Id can't be null")
     @Pattern(message = "Attempt to enter a numeric value in the group id", regexp = "[0-9]+")
-    public String group_id;
+    private String group_id;
 
 }
