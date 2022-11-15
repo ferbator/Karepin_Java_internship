@@ -2,6 +2,7 @@ package org.ferbator.controllers;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
+import com.vk.services.tools.VkApiException;
 import org.ferbator.data.InputData;
 import org.ferbator.data.OutputData;
 import org.ferbator.services.ApplicationService;
@@ -23,8 +24,7 @@ class ApplicationController {
     }
 
     @GetMapping(value = "/user.getUserStatus")
-    public String getUserStatus(@RequestParam String user_id, @RequestParam String token)
-            throws ClientException, ApiException {
+    public String getUserStatus(@RequestParam String user_id, @RequestParam String token) throws VkApiException {
         return service.getUserStatus(user_id, token);
     }
 
