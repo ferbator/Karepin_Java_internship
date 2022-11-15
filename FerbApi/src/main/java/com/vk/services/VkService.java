@@ -28,10 +28,10 @@ public class VkService {
         UsersGetQuery usersGetQuery;
         usersGetQuery = vk.users().get(actor).userIds(userid);
         try {
-        return usersGetQuery.fields(Fields.STATUS)
-                .execute()
-                .get(0)
-                .getStatus();
+            return usersGetQuery.fields(Fields.STATUS)
+                    .execute()
+                    .get(0)
+                    .getStatus();
         } catch (ApiException e) {
             throw new VkApiException(e.getMessage(), e.getCause());
         } catch (ClientException e) {
@@ -48,12 +48,12 @@ public class VkService {
 
         getResponse = vk.users()
                 .get(actor)
-                .userIds(inputData.user_id)
+                .userIds(inputData.getUser_id())
                 .execute()
                 .get(0);
 
         isMemberUserIdsResponse = vk.groups()
-                .isMemberWithUserIds(actor, inputData.group_id, Integer.valueOf(inputData.user_id))
+                .isMemberWithUserIds(actor, inputData.getGroup_id(), Integer.valueOf(inputData.getUser_id()))
                 .execute()
                 .get(0);
 
